@@ -1,0 +1,33 @@
+{
+  "name": "MapDQlik",
+  "version": "0.1.0",
+  "scripts": {
+    "build-webpack": "qext-scripts -b",
+    "watch-webpack": "qext-scripts -w",
+    "build-vanilla": "qext-scripts -B",
+    "watch-vanilla": "qext-scripts -W",
+    "deploy-server": "qext-scripts -d",
+    "deploy-desktop": "qext-scripts -D",
+    "build-webpack-deploy-server": "qext-scripts -b -d",
+    "watch-webpack-deploy-server": "qext-scripts -w -d",
+    "build-webpack-deploy-desktop": "qext-scripts -b -D",
+    "watch-webpack-deploy-desktop": "qext-scripts -w -D",
+    "build-vanilla-deploy-server": "qext-scripts -B -d",
+    "watch-vanilla-deploy-server": "qext-scripts -W -d",
+    "build-vanilla-deploy-desktop": "qext-scripts -B -D",
+    "watch-vanilla-deploy-desktop": "qext-scripts -W -D",
+    "test": "NODE_ENV=test mocha --reporter=nyan --require babel-register test/*.js"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "mocha": "^5.2.0",
+    "proxyquire": "^2.0.1",
+    "proxyquireify": "^3.2.1",
+    "qext-scripts": "^0.5.0"
+  },
+  "dependencies": {
+    "@mapd/connector": "git+https://github.com/mapd/mapd-connector.git",
+    "leaflet": "^1.3.1"
+  }
+}
