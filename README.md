@@ -28,8 +28,8 @@ npm run watch-webpack-deploy-desktop
 
 It will build the extension in the appropriate path and you should have access to MapD-Qlik within Qlik Sense.
 
-# Examples Vega Specifications
-To see examples of vega sepcifications to use in Qlik, check out http://vega-demo.mapd.com.  You can use the examples listed on that site as a base to build your vega specification.  To add the Qlik Filters to the SQL statement.  Add: `$qlikFilters` to the SQL statement in the vega spec.
+# Vega Specification Examples
+To see vega sepcification examples to use in Qlik, check out http://vega-demo.mapd.com.  You can use the examples listed on that site as a base to build your vega specification.  To make sure the the filters in Qlik are being added to the MapD SQL Statement.  Add the `$qlikFilters` variable to vega spec in the `data[sql]` statement.
 
 eg:
 ```
