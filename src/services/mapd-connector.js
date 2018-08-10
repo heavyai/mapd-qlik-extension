@@ -1,11 +1,11 @@
-import MapDCon from '@mapd/connector/dist/browser-connector'
-import {updateMap} from './leaflet'
-import {convertVariables, debounce} from '../helpers'
+import MapDCon from '@mapd/connector/dist/browser-connector';
+import { updateMap } from './leaflet';
+import { convertVariables, debounce } from '../helpers';
 
-let currentVegaSpec = null
+let currentVegaSpec = null;
 
 // connector is a singleton
-const connection = new window.MapdCon()
+const connection = new window.MapdCon();
 let isConnected = false;
 
 function establishConnection(config) {
@@ -18,43 +18,41 @@ function establishConnection(config) {
       .password(config.password)
       .connect((error, con) => {
         if (error) {
-          reject(error)
+          reject(error);
         } else if (con) {
-          console.log('connected')
-          resolve(con)
+          console.log('connected');
+          resolve(con);
           isConnected = true;
         }
-      })
-  })
+      });
+  });
 }
 
-function renderVega (vegaSpec, vegaOptions) {
-  if (!vegaOptions) vegaOptions = {returnTiming: true}
+function renderVega(vegaSpec, vegaOptions) {
+  if (!vegaOptions) vegaOptions = { returnTiming: true };
   return new Promise((resolve, reject) => {
     connection.renderVega(1, vegaSpec, vegaOptions, function(error, result) {
       if (error) {
-        reject(error.message)
+        reject(error.message);
       } else {
-        var blobUrl = `data:image/png;base64,${result.image}`
-        resolve(blobUrl)
+        var blobUrl = `data:image/png;base64,${result.image}`;
+        resolve(blobUrl);
       }
-    })
-  })
+    });
+  });
 }
 
-function render (vegaSpec) {
+function render(vegaSpec) {
   if (vegaSpec) {
-    currentVegaSpec = vegaSpec
+    currentVegaSpec = vegaSpec;
   }
 
-  renderVega(convertVariables(currentVegaSpec))
-  .then((result) => {
-    updateMap(result)
-  })
+  renderVega(convertVariables(currentVegaSpec)).then(result => {
+    updateMap(result);
+  });
 }
 
-const debouncedRender = debounce(render, 300)
-
+const debouncedRender = debounce(render, 300);
 
 export {
   connection,
@@ -62,4 +60,4 @@ export {
   establishConnection,
   debouncedRender,
   render
-}
+};

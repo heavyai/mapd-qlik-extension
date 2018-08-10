@@ -6,7 +6,7 @@ import paint from './paint.js';
 import resize from './resize.js';
 import localCSS from './style.scss';
 
-export default window.define(["js/qlik"], function(qlik) {
+export default window.define(['js/qlik'], function(qlik) {
   return {
     initialProperties: initialProperties,
     template: template,
@@ -14,5 +14,5 @@ export default window.define(["js/qlik"], function(qlik) {
     controller: controller(qlik),
     paint: paint,
     resize: resize
-  }
-})
+  };
+});

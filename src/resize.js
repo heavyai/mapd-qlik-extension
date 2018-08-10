@@ -1,12 +1,11 @@
-import {resizeMap} from './services/leaflet'
-import {debounce} from './helpers'
+import { resizeMap } from './services/leaflet';
+import { debounce } from './helpers';
 
-const debouncedResize = debounce(resizeMap, 500)
+const debouncedResize = debounce(resizeMap, 500);
 
-export default function ($element, layout) {
+export default function($element, layout) {
   const ext = this;
   const viz = ext.$scope.viz;
 
-  return debouncedResize($element, layout)
+  return debouncedResize($element, layout);
 }
-
